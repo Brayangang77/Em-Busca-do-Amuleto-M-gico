@@ -1,10 +1,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TrocarTela : MonoBehaviour
+public class Trocadetela : MonoBehaviour
 {
-    public void IrParaCena2()
+   public void MudarCena()
+{
+   SceneManager.LoadScene(1);
+
+}
+    
+    
+    
+    
+    
+    
+    
+    void Start()
     {
-        SceneManager.LoadScene("Cena2");
+        
+    }
+
+    
+    void Update()
+    {
+        
     }
 }
