@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Botton
+  - inimigo
+  - "ch\xE3o"
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
+    Rigidbody2D rb;
+    Vector2 movimento;
 
     void Start()
     {
@@ -14,23 +14,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement = Vector2.zero;
+        movimento.x = Input.GetAxisRaw("Horizontal");
+        movimento.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.W))
-            movement.y = 1;
+        if (movimento.x != 0)
+    {
+    float tamanho = Mathf.Abs(transform.localScale.x);
 
-        if (Input.GetKey(KeyCode.S))
-            movement.y = -1;
-
-        if (Input.GetKey(KeyCode.A))
-            movement.x = -1;
-
-        if (Input.GetKey(KeyCode.D))
-            movement.x = 1;
+    transform.localScale = new Vector3(
+        movimento.x > 0 ? tamanho : -tamanho,
+        transform.localScale.y,
+        transform.localScale.z
+    );
+}
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movimento.normalized * speed * Time.fixedDeltaTime);
     }
 }

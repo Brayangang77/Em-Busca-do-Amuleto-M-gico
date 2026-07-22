@@ -1,16 +1,30 @@
 using UnityEngine;
 
-public class movimentaiçãogolen : MonoBehaviour
+public class Golem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float velocidade = 1f;
+    public Transform inimigo;
+
+    Rigidbody2D rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        float direcao = inimigo.position.x > transform.position.x ? 1 : -1;
+
+        rb.linearVelocity = new Vector2(direcao * velocidade, rb.linearVelocity.y);
+
+        // vira o Golem sem alterar o tamanho
+        float tamanho = Mathf.Abs(transform.localScale.x);
+
+        transform.localScale = new Vector3(
+            -direcao * tamanho,
+            transform.localScale.y,
+            transform.localScale.z
+        );
     }
 }
