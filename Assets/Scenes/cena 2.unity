@@ -517,7 +517,41 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: e1a42850161092e4ea0d937de41236d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2058558628}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: e1a42850161092e4ea0d937de41236d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2058558630}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: e1a42850161092e4ea0d937de41236d2, type: 3}
+--- !u!1 &431083848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431083849}
+  m_Layer: 0
+  m_Name: golen attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &431083849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431083848}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.027528154, z: -0, w: 0.99962103}
+  m_LocalPosition: {x: 14.88, y: -4.17, z: 0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -3.155, z: 0}
 --- !u!1001 &476828493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -598,10 +632,10 @@ PrefabInstance:
       addedObject: {fileID: 825397182}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 825397186}
+      addedObject: {fileID: 825397189}
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 825397189}
+      addedObject: {fileID: 825397192}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
 --- !u!1 &684461275
 GameObject:
@@ -818,20 +852,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &825397186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 825397181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6545b37a4a3a642448717fcd50268857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Golem
-  velocidade: 0.5
-  inimigo: {fileID: 2058558626}
 --- !u!114 &825397189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +865,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   health: 100
+--- !u!114 &825397192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825397181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b0dfdb0df49d7448c59c63c888b7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Golem
+  velocidade: 1
+  inimigo: {fileID: 2058558626}
+  bolaDeGelo: {fileID: 4584622414621578682, guid: 3ab9aeb99b89b304692859928c94611a, type: 3}
+  pontoDisparo: {fileID: 431083849}
+  distanciaAtaque: 5
+  tempoAtaque: 2
 --- !u!1 &1120235357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1193,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   fireballPrefab: {fileID: 5145535761893675212, guid: 77dc0a60c2b64d746a9270d2fd55367d, type: 3}
   firePoint: {fileID: 1538000816}
+--- !u!114 &2058558630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058558619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700d1726b93a9fd4abd60d6e3aa676c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  vida: 100
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1166,3 +1217,4 @@ SceneRoots:
   - {fileID: 1397677156}
   - {fileID: 94155081}
   - {fileID: 96837202}
+  - {fileID: 431083849}
