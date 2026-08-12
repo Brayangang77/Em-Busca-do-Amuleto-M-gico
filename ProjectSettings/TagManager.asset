@@ -7,6 +7,8 @@ TagManager:
   - Botton
   - inimigo
   - "ch\xE3o"
+  - PlayerFireball
+  - Ground
   layers:
   - Default
   - TransparentFX
