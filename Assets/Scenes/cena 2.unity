@@ -119,6 +119,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &45827806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45827808}
+  - component: {fileID: 45827807}
+  m_Layer: 0
+  m_Name: defesa golen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &45827807
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45827806}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.019129872, y: -0.05650431}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7934022, y: 0.8869914}
+  m_EdgeRadius: 0
+--- !u!4 &45827808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45827806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 825397194}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94155078
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,8 +491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerGolem
   golemPrefab: {fileID: 825397181}
   jogador: {fileID: 2058558626}
-  tempo: 15
-  quantidadeMaxima: 3
+  tempo: 28
+  quantidadeMaxima: 4
 --- !u!4 &96837202
 Transform:
   m_ObjectHideFlags: 0
@@ -543,19 +621,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.283086
+      value: 5.557278
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.677569
+      value: 6.020494
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.4192
+      value: 17.3342
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.404
+      value: -4.4109
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -595,6 +673,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 628726653}
+    - targetCorrespondingSourceObject: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 45827808}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       insertIndex: -1
@@ -882,20 +963,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Golem
   velocidade: 1
   inimigo: {fileID: 2058558626}
-  bolaDeGelo: {fileID: 4584622414621578682, guid: 3ab9aeb99b89b304692859928c94611a, type: 3}
+  bolaDeGelo: {fileID: 1164727342204393616, guid: bc706ad6e764ccc4c986ddb81a81a2e0, type: 3}
   bolaDeGeloGrande: {fileID: 1981390521438616843, guid: 0b1ad2e65c28c46438bec436fae44fb6, type: 3}
   pontoDisparo: {fileID: 628726653}
-  defesaGelo: {fileID: 0}
-  posicaoAtaque: 0.65
+  defesaGelo: {fileID: 45827806}
+  posicaoInicial: 0.5
+  distanciaAtaque: 10
   tolerancia: 0.1
-  intervaloEntreBolas: 5
-  intervaloEntreAtaques: 5
-  quantidadeBolas: 1
+  intervaloEntreBolas: 2
+  intervaloEntreAtaques: 2
+  quantidadeBolas: 3
 --- !u!4 &825397194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
   m_PrefabInstance: {fileID: 476828493}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &978417899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978417901}
+  - component: {fileID: 978417900}
+  m_Layer: 0
+  m_Name: teto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &978417900
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978417899}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 2.1760917, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 25.493683, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &978417901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978417899}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.09, y: 5.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120235357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1198,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.1207051, y: -0.18718958}
+  m_Offset: {x: -1.1207051, y: -0.12556049}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1048,7 +1208,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.18520355, y: 10}
+  m_Size: {x: 0.18520355, y: 1.9266067}
   m_EdgeRadius: 0
 --- !u!4 &1397677156
 Transform:
@@ -1059,7 +1219,7 @@ Transform:
   m_GameObject: {fileID: 1397677154}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -7.96, y: 1.04, z: 0}
   m_LocalScale: {x: 2.752889, y: 4.8175554, z: 2.752889}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1230,3 +1390,4 @@ SceneRoots:
   - {fileID: 1397677156}
   - {fileID: 94155081}
   - {fileID: 96837202}
+  - {fileID: 978417901}

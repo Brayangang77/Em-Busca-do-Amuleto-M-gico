@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/cena 2.unity
     guid: f9d28afa2f65e564fbfd9698b89b9b37
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/cena 3.unity
     guid: 2da90bd738ae7ee448bf04ffbc96f3af
   m_configObjects:

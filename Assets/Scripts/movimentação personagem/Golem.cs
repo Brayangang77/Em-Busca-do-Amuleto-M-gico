@@ -4,15 +4,17 @@ public class Golem : MonoBehaviour
 {
     public float velocidade = 1f;
 
-    [Header("Referências")]
+    [Header("Referencias")]
     public Transform inimigo;
-    public GameObject bolaDeGelo, bolaDeGeloGrande;
+    public GameObject bolaDeGelo;
+    public GameObject bolaDeGeloGrande;
     public Transform pontoDisparo;
     public GameObject defesaGelo;
 
-    [Header("Posição de Ataque")]
+    [Header("Movimento")]
     [Range(0.1f, 0.9f)]
-    public float posicaoAtaque = 0.65f;
+    public float posicaoInicial = 0.1f;
+    public float distanciaAtaque = 2f;
     public float tolerancia = 0.1f;
 
     [Header("Ataque")]
@@ -20,11 +22,16 @@ public class Golem : MonoBehaviour
     public float intervaloEntreAtaques = 2f;
     public int quantidadeBolas = 3;
 
-    Rigidbody2D rb;
-    float proximoDisparo, proximoAtaque;
-    int bolasDisparadas;
-    bool atacando;
-    bool protegido = true;
+    private Rigidbody2D rb;
+
+    private float proximoDisparo;
+    private float proximoAtaque;
+
+    private int bolasDisparadas;
+
+    private bool atacando;
+    private bool protegido = true;
+    private bool chegouAos10 = false;
 
     void Start()
     {
@@ -32,20 +39,43 @@ public class Golem : MonoBehaviour
 
         if (defesaGelo != null)
             defesaGelo.SetActive(true);
+
+        
+        proximoDisparo = Time.time;
     }
 
     void FixedUpdate()
     {
-        if (inimigo == null || Camera.main == null) return;
+        if (inimigo == null || Camera.main == null)
+            return;
 
-        float alvo = Camera.main.ViewportToWorldPoint(
-            new Vector3(posicaoAtaque, 0.5f, -Camera.main.transform.position.z)
+        if (!chegouAos10)
+        {
+            IrAte10Porcento();
+            Atacar();
+            return;
+        }
+
+        if (inimigo.position.x > transform.position.x + distanciaAtaque)
+        {
+            PerseguirPlayer();
+            return;
+        }
+
+        PararEAtacar();
+    }
+
+    void IrAte10Porcento()
+    {
+        float pontoDeParada = Camera.main.ViewportToWorldPoint(
+            new Vector3(
+                posicaoInicial,
+                0.5f,
+                -Camera.main.transform.position.z
+            )
         ).x;
 
-        float distancia = alvo - transform.position.x;
-
-        // Enquanto não chegou ao ponto de ataque, vai da direita para a esquerda
-        if (Mathf.Abs(distancia) > tolerancia)
+        if (transform.position.x > pontoDeParada + tolerancia)
         {
             rb.linearVelocity = new Vector2(
                 -velocidade,
@@ -61,18 +91,48 @@ public class Golem : MonoBehaviour
             return;
         }
 
-        // Chegou ao ponto de ataque
-        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-
+        chegouAos10 = true;
         protegido = false;
+
+        rb.linearVelocity = new Vector2(
+            0f,
+            rb.linearVelocity.y
+        );
 
         if (defesaGelo != null)
             defesaGelo.SetActive(false);
 
-        // Continua olhando para o Player
         VirarParaPlayer();
+    }
 
-        // Ataque
+    void PerseguirPlayer()
+    {
+        protegido = false;
+        atacando = false;
+
+        rb.linearVelocity = new Vector2(
+            velocidade,
+            rb.linearVelocity.y
+        );
+
+        VirarParaPlayer();
+    }
+
+    void PararEAtacar()
+    {
+        protegido = false;
+
+        rb.linearVelocity = new Vector2(
+            0f,
+            rb.linearVelocity.y
+        );
+
+        VirarParaPlayer();
+        Atacar();
+    }
+
+    void Atacar()
+    {
         if (!atacando && Time.time >= proximoAtaque)
         {
             atacando = true;
@@ -80,25 +140,35 @@ public class Golem : MonoBehaviour
             proximoDisparo = Time.time;
         }
 
-        if (atacando && Time.time >= proximoDisparo)
-        {
-            DispararBola();
+        if (!atacando)
+            return;
 
-            if (++bolasDisparadas >= quantidadeBolas)
-            {
-                atacando = false;
-                proximoAtaque = Time.time + intervaloEntreAtaques;
-            }
-            else
-            {
-                proximoDisparo = Time.time + intervaloEntreBolas;
-            }
+        if (Time.time < proximoDisparo)
+            return;
+
+        DispararBola();
+
+        bolasDisparadas++;
+
+        if (bolasDisparadas >= quantidadeBolas)
+        {
+            atacando = false;
+            proximoAtaque = Time.time + intervaloEntreAtaques;
+        }
+        else
+        {
+            proximoDisparo = Time.time + intervaloEntreBolas;
         }
     }
 
     void VirarParaPlayer()
     {
-        float direcao = inimigo.position.x > transform.position.x ? 1 : -1;
+        float direcao;
+
+        if (inimigo.position.x > transform.position.x)
+            direcao = 1f;
+        else
+            direcao = -1f;
 
         transform.localScale = new Vector3(
             -direcao * Mathf.Abs(transform.localScale.x),
@@ -109,9 +179,15 @@ public class Golem : MonoBehaviour
 
     void DispararBola()
     {
-        GameObject prefab = Random.value < 0.7f
-            ? bolaDeGelo
-            : bolaDeGeloGrande;
+        GameObject prefab;
+
+        if (Random.value < 0.7f)
+            prefab = bolaDeGelo;
+        else
+            prefab = bolaDeGeloGrande;
+
+        if (prefab == null || pontoDisparo == null)
+            return;
 
         GameObject gelo = Instantiate(
             prefab,
@@ -131,7 +207,11 @@ public class Golem : MonoBehaviour
             Mathf.Sin(angulo * Mathf.Deg2Rad)
         ).normalized;
 
-        gelo.GetComponent<IceProjectile>()?.SetDirection(direcao);
+        IceProjectile projetil =
+            gelo.GetComponent<IceProjectile>();
+
+        if (projetil != null)
+            projetil.SetDirection(direcao);
     }
 
     public bool EstaProtegido()

@@ -14,14 +14,20 @@ public class Fireball : MonoBehaviour
 
     void Update()
     {
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        transform.position +=
+            (Vector3)(direction * speed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("inimigo"))
         {
-            collision.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            Golem golem = collision.GetComponent<Golem>();
+
+            if (golem != null && !golem.EstaProtegido())
+            {
+                collision.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            }
 
             Destroy(gameObject);
         }
