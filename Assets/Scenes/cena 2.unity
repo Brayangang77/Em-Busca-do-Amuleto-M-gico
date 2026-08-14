@@ -492,7 +492,7 @@ MonoBehaviour:
   golemPrefab: {fileID: 825397181}
   jogador: {fileID: 2058558626}
   tempo: 28
-  quantidadeMaxima: 4
+  quantidadeMaxima: 6
 --- !u!4 &96837202
 Transform:
   m_ObjectHideFlags: 0
@@ -621,19 +621,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.557278
+      value: 5.4043336
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.020494
+      value: 5.8844433
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.3342
+      value: 17.3817
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.4109
+      value: -4.4081
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21712cf69e9588645a8ebbfbf59f76b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -897,7 +897,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.2763371}
+  m_Offset: {x: -0.01524438, y: 0.2763371}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: -0.032258064}
@@ -907,7 +907,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.62, y: 0.5126742}
+  m_Size: {x: 0.5895113, y: 0.5126742}
   m_EdgeRadius: 0
 --- !u!50 &825397183
 Rigidbody2D:
@@ -1141,7 +1141,7 @@ Transform:
   m_GameObject: {fileID: 1120235357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.27, y: 0.6624, z: 0}
+  m_LocalPosition: {x: -0.12, y: 0.64, z: 0}
   m_LocalScale: {x: 3.681292, y: 2.8776414, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba91760d402081748a590dd2625c34df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  fireballPrefab: {fileID: 5145535761893675212, guid: 77dc0a60c2b64d746a9270d2fd55367d, type: 3}
+  fireballPrefab: {fileID: 9207550629253764497, guid: 0ecdfeec3d80eb246b5471df0c88eee9, type: 3}
   firePoint: {fileID: 1538000816}
 --- !u!114 &2058558630
 MonoBehaviour:
